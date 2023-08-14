@@ -1,9 +1,9 @@
-import Navbar from '../Components/Navbar/Navbar'
+// import Navbar from '../Components/Navbar'
 
 const About = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <h1>About Page </h1> 
     </>
   )
