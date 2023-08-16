@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Navbar from '../Components/Navbar/Navbar'
+// import Navbar from '../Components/Navbar'
 
 const Contact = () => {
 
@@ -13,7 +13,7 @@ const Contact = () => {
         setData(result)
         localStorage.setItem('users', JSON.stringify(result))
       })
-    }).catch((e) => {
+    }).catch(() => {
       setMode('offline')
       const collection = localStorage.getItem('users')
       if (collection) {
@@ -24,7 +24,7 @@ const Contact = () => {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <h1>Contact</h1>
       <div>
         <div>
