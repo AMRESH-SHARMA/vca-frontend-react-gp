@@ -9,7 +9,8 @@ import Footer from '../components/Footer'
 const Home = () => {
   return (
     <>
-      <Footer />
+      <Navbar />
+      <h1>Home (ankur dummy commit)</h1>
     </>
   )
 }
