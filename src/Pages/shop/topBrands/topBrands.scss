@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+
+.top-brands{
+    padding-top: 30px;
+    
+}
+
+.top-brands-wrapper{
+    display: flex;
+    // flex-wrap: wrap;
+    // max-width: 800px;
+    // justify-content: space-around;
+
+}
+
+.top-brands-cover{
+    margin-right: 20px;
+    border-radius: 10%;
+    background-color: $primary-bg;
+    box-shadow: $carousel-shadow;
+    border: 0.5px solid $border-white;
+
+    height: 200px;
+    width: 300px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.top-brands-image{
+    border-radius: inherit;
+    height: 200px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid transparent;
+}

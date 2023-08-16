@@ -1,6 +1,8 @@
+import ExploreSection from "../../components/common/exploreSection/ExploreSection"
 import Filters from "../../components/common/filters/Filters"
+import TopBrands from "./topBrands/TopBrands"
 
-const shopFilters: any[]  = [
+const shopFilters: any[] = [
   {
     id: 1,
     icon: <i className='absolute-center fa fa-filter'></i>,
@@ -17,10 +19,13 @@ const shopFilters: any[]  = [
 ]
 
 const Shop = () => {
-  return (<div className='max-width'>
-    <Filters filterList={shopFilters} />
-    This is shop
-  </div>
+  return (<>
+    <div className='max-width'>
+      <Filters filterList={shopFilters} />
+    </div>
+    <TopBrands />
+    <ExploreSection/>
+  </>
   )
 }
 
