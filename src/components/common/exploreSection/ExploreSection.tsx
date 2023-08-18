@@ -1,7 +1,7 @@
 import './exploreSection.scss'
 import ExploreCard from './exploreCard/ExploreCard'
 
-const list=[]
+// const list=[]
 const ExploreSection = () => {
   return (
     <div className='max-width explore-section'>

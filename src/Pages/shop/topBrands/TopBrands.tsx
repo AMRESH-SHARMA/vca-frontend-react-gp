@@ -1,6 +1,5 @@
 import { carPlus } from '../../../assets/icons'
 import './topBrands.scss'
-import NextArrow from '../../../components/carousel/NextArrow'
 
 const topBrandsList = [
   {

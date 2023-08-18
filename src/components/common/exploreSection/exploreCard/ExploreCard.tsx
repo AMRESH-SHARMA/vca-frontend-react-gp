@@ -1,10 +1,11 @@
 import './exploreCard.scss'
+import {p} from '../../../../assets/images/index'
 
 const ExploreCard = () => {
   return (
     <div className='explore-card cur-po'>
       <div className='explore-card-cover'>
-        <img src="https://b.zmtcdn.com/data/pictures/chains/1/47211/e8cf1c58f2bb217f3d85ff50b7fe39a3_o2_featured_v2.jpg" alt="nname" className='explore-card-image' />
+        <img src={p} alt="nname" className='explore-card-image' />
         <div className='delivery-time'>delivery time</div>
         {true && <div className='pro-off'>proff</div>}
         {true && <div className='gold-off absolute-center'>gold</div>}

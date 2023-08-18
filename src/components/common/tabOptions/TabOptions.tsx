@@ -29,27 +29,29 @@ const tabs = [
 
 const TabOptions: React.FC<TabOptionsProps> = ({ activeTab, setActiveTab }) => {
   return (<>
-      <div className='max-width'>
-
-        <div id="tab-option-banner-top">
+    <div className='top-banner'>
+    <h1 className="overlay-text">Dummy Text Overlay</h1>
+    </div>
+    <div className='max-width'>
+      {/* <div id="tab-option-banner-top">
           <h6>SHOPPING TOOLS</h6>
           <br />
           <h2>FIND YOUR FLEET.</h2>
-        </div>
+        </div> */}
 
 
-        <div id="tab-option-banner">
+      <div id="tab-option-banner">
 
-          {tabs.map((tab) => {
-            return <div key={tab.id} onClick={() => setActiveTab(tab.name)} className={`tab-item absolute-center cur-po ${activeTab === tab.name && 'active-tab'}`}>
+        {tabs.map((tab) => {
+          return <div key={tab.id} onClick={() => setActiveTab(tab.name)} className={`tab-item absolute-center cur-po ${activeTab === tab.name && 'active-tab'}`}>
+            <img src={tab.img} alt={tab.name} className='tab-image ' />
+            <p>{tab.head1}</p>
+          </div>
+        })}
 
-              <img src={tab.img} alt={tab.name} className='tab-image '/>
-              <p>{tab.head1}</p>
-            </div>
-          })}
-
-        </div>
       </div>
+    </div>
+
   </>
   )
 }
