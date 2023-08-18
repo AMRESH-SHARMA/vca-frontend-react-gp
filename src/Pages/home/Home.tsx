@@ -3,6 +3,7 @@ import Footer from '../../components/common/footer/Footer'
 import Header from '../../components/common/header/Header'
 import TabOptions from '../../components/common/tabOptions/TabOptions'
 import Shop from '../shop/Shop'
+import Login from '../login/Contact'
 import AboutUs from '../../components/aboutUS/AboutUs'
 
 
@@ -15,7 +16,7 @@ const Home = () => {
       case "Shop":
         return <Shop />
       case "Book":
-        return <AboutUs />
+        return <Login/>
       case "Config":
         return <AboutUs />
       default:

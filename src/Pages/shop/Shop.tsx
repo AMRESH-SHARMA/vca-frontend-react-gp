@@ -1,26 +1,29 @@
-import Filters from "../../components/common/filters/Filters"
+import ExploreSection from '../../components/common/exploreSection/ExploreSection'
+// import Filters from "../../components/common/filters/Filters"
+import TopBrands from './topBrands/TopBrands'
+import Filter from '../../components/common/filter/Filter'
 
-const shopFilters: any[]  = [
-  {
-    id: 1,
-    icon: <i className='absolute-center fa fa-filter'></i>,
-    title: 'Filters'
-  },
-  {
-    id: 2,
-    title: 'Rating: 4.0+'
-  },
-  {
-    id: 3,
-    title: 'Great offers'
-  }
-]
+const seg = [{ id: 0, label: 'All' }, { id: 1, label: 'SUV' }]
+
+const man = [{ id: 0, label: 'All' }, { id: 1, label: 'TAVA' }]
+
+const mod = [{ id: 0, label: 'All' }, { id: 1, label: 'NEXON' }]
 
 const Shop = () => {
-  return (<div className='max-width'>
-    <Filters filterList={shopFilters} />
-    This is shop
-  </div>
+  return (<>
+    <div className='max-width'>
+      <div className='filters'>
+
+        <Filter data={seg} title={'Segment'} />
+
+        <Filter data={man} title={'Manufacturer'} />
+
+        <Filter data={mod} title={'Model'} />
+      </div>
+    </div>
+    <TopBrands />
+    <ExploreSection />
+  </>
   )
 }
 
