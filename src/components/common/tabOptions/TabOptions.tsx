@@ -30,7 +30,8 @@ const tabs = [
 const TabOptions: React.FC<TabOptionsProps> = ({ activeTab, setActiveTab }) => {
   return (<>
     <div className='top-banner'>
-    <h1 className="overlay-text">Dummy Text Overlay</h1>
+    <h1 className="overlay-h">Vehicle Configurator</h1>
+    <p className="overlay-p">Product for leasing company</p>
     </div>
     <div className='max-width'>
       {/* <div id="tab-option-banner-top">
