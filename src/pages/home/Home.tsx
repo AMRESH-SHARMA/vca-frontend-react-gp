@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import Footer from '../../components/common/footer/Footer'
-import Header from '../../components/common/header/Header'
 import TabOptions from '../../components/common/tabOptions/TabOptions'
 import Shop from '../shop/Shop'
 import Login from '../contact/Contact'
-import AboutUs from '../../components/aboutUS/AboutUs'
-import ExploreSection from '../../components/common/exploreSection/ExploreSection'
+import AboutUs from '../aboutUS/AboutUs'
+import Navbar from '../../components/common/navbar/Navbar'
 
 const Home = () => {
 
@@ -25,7 +24,7 @@ const Home = () => {
   }
 
   return (<>
-    <Header />
+    <Navbar />
     <TabOptions activeTab={activeTab} setActiveTab={setActiveTab} />
     {getCorrectScreen(activeTab)}
     <Footer />
