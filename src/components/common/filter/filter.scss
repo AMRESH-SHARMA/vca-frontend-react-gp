@@ -1,3 +1,5 @@
+@import '../../../styles/mixins';
+
 .filters{
     padding: 16px 0px;
     display: flex;
@@ -30,8 +32,9 @@
     position: absolute;
     background-color: white;
     width: 200px;
-    // max-height: 200px;
+    max-height: 250px;
     overflow-y: auto;  
+    @include scrollbars(10px, #41424c, #F5F5F5);
 }
   
   .dropdown-body.open {
