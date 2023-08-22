@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './styles/_index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BASE_URL } from './utility/apiConfig';
 import swDev from './serviceWorkerRegistration';
+import axios from 'axios'
+
+// const setupAxios = () => {
+//   axios.defaults.baseURL = BASE_URL;
+// };
+// setupAxios();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <App />

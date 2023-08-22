@@ -3,9 +3,9 @@ import Footer from '../../components/common/footer/Footer'
 import Header from '../../components/common/header/Header'
 import TabOptions from '../../components/common/tabOptions/TabOptions'
 import Shop from '../shop/Shop'
-import Login from '../login/Contact'
+import Login from '../contact/Contact'
 import AboutUs from '../../components/aboutUS/AboutUs'
-
+import ExploreSection from '../../components/common/exploreSection/ExploreSection'
 
 const Home = () => {
 
@@ -25,7 +25,6 @@ const Home = () => {
   }
 
   return (<>
-
     <Header />
     <TabOptions activeTab={activeTab} setActiveTab={setActiveTab} />
     {getCorrectScreen(activeTab)}
