@@ -14,8 +14,8 @@ const ExploreCard:  React.FC<CarItemProps> = ({name, price,safetyRating, fuelTyp
   return (
     <div className='explore-card cur-po'>
       <div className='explore-card-cover'>
-        <img src={p} alt="nname" className='explore-card-image' />
-        <div className='fuel-type'>{fuelType}</div>
+        <img src={imageUrl} alt="nname" className='explore-card-image' />
+        <div className='fuel-type'>PETROL</div>
         {true && <div className='pro-off'>proff</div>}
         {true && <div className='gold-off absolute-center'>gold</div>}
         {true && <div className='discount absolute-center'>discount</div>}

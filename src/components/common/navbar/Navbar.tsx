@@ -23,18 +23,6 @@ const Navbar = () => {
           <li className="nav-link" onClick={() => navigate('/')}>Home</li>
           <li className="nav-link" onClick={() => navigate('/login')}>Login</li>
           <li className="nav-link" onClick={() => navigate('/register')}>Register</li>
-          <li className="nav-link dropdown" onClick={handleShow}>
-            <div
-              className={`dropdown-content ${show ? 'dropdown-content-block' : 'dropdown-content-hide'}`}
-            >
-              <a href="#">Option 1</a>
-              <a href="#">Option 2</a>
-              <div className="divider"></div>
-              <a href="#">
-                <i className="fa fa-shopping-cart"></i>
-              </a>
-            </div>
-          </li>
         </ul>
       </div>
     </nav>
