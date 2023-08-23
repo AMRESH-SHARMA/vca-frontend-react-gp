@@ -1,5 +1,5 @@
-import ExploreSection from '../../components/common/exploreSection/ExploreSection'
-import TopBrands from './topBrands/TopBrands'
+import ExploreSection from '../../components/common/exploreSection/exploreSection/ExploreSection'
+import ExploreDefaultSection from '../../components/common/exploreSection/exploreDefaultSection/ExploreDefaultSection'
 import Filter from '../../components/common/filter/Filter'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -21,16 +21,16 @@ const Shop = () => {
   const [segments, setSegments] = useState<Segment[]>([]);
   const [manufacturers, setManufacturers] = useState<Manufacturer[]>([]);
 
-  const [clickedSegId, setclickedSegId] = useState<number>(-1);
-  const [clickedManuId, setclickedManuId] = useState<number>(-1);
+  const [clickedSegId, setClickedSegId] = useState<number>(0);
+  const [clickedManuId, setClickedManuId] = useState<number>(0);
 
   const handleSegmentClicked = (id: number) => {
     // console.log("clicked seg with ID:", id)
-    setclickedSegId(id);
+    setClickedSegId(id);
     (async () => {
       try {
         const res = await axios.get(`/manufacturers/${id}`)
-        console.log(res.data)
+        // console.log(res.data)
         setManufacturers(res.data.data);
       } catch (e) {
         console.warn(e)
@@ -40,10 +40,10 @@ const Shop = () => {
 
   const handleManufacturerClicked = (id: number) => {
     // console.log("clicked manu with ID:", id);
+    setClickedManuId(id);
     (async () => {
       try {
-        const res = await axios.get(`/models/${id}`)
-        console.log(res.data)
+        const res = await axios.get(`/models/${clickedSegId}/${id}`)
         // setModels(res.data.data);
       } catch (e) {
         console.warn(e)
@@ -75,8 +75,14 @@ const Shop = () => {
 
       </div>
     </div>
-    {/* <TopBrands /> */}
-    <ExploreSection segId={clickedSegId} manuId={clickedManuId} />
+    {!clickedManuId ?
+      <>
+        <ExploreDefaultSection />
+      </>
+      : <>
+        <ExploreSection segId={clickedSegId} manuId={clickedManuId} />
+      </>}
+
   </>
   )
 }

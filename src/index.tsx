@@ -7,10 +7,10 @@ import { BASE_URL } from './utility/apiConfig';
 import swDev from './serviceWorkerRegistration';
 import axios from 'axios'
 
-// const setupAxios = () => {
-//   axios.defaults.baseURL = BASE_URL;
-// };
-// setupAxios();
+const setupAxios = () => {
+  axios.defaults.baseURL = BASE_URL;
+};
+setupAxios();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
