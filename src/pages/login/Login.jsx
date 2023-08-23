@@ -28,10 +28,11 @@ function Login() {
     event.preventDefault();
 
     try {
-      await axios.post("http://localhost:8080/api/v1/login", formData);
-      alert("Login Successful");
+     let res= await axios.post("http://localhost:8080/api/auth/login", formData);
+      console.log("done",res)
+  
     } catch (error) {
-      alert("Login Failed");
+      console.log(event);
     }
   };
 
