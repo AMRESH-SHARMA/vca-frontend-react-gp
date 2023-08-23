@@ -55,7 +55,7 @@ const Shop = () => {
     (async () => {
       try {
         const res = await axios.get(`/segments`)
-        setSegments(res.data.data);
+        setSegments([{ id: 0, name: 'all' }, ...res.data.data])
         setLoading(false)
       } catch (e) {
         setLoading(false)
@@ -75,7 +75,7 @@ const Shop = () => {
 
       </div>
     </div>
-    {!clickedManuId ?
+    {!clickedManuId || clickedSegId===0?
       <>
         <ExploreDefaultSection />
       </>
