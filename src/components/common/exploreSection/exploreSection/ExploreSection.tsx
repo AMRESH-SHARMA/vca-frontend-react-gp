@@ -8,6 +8,7 @@ const PAGE_NUMBER = 0;
 
 interface CarApi {
   id: number;
+  minQty: number;
   name: string;
   price: number;
   safetyRating: number;
@@ -73,7 +74,8 @@ return (<>
       {carsData.length == 0 ? <Loader /> : <>
         {carsData?.map((c, index) => (
           <div key={index}>
-            <ExploreCard name={c.modName} price={c.price} safetyRating={c.safetyRating} fuelType={c.fuelType} imageUrl={c.image_path} />
+            <ExploreCard name={c.modName} price={c.price} safetyRating={c.safetyRating} fuelType={c.fuelType} imageUrl={c.image_path} minQty={c.minQty}
+/>
           </div>
         ))}
         {loading && <Loader />}
