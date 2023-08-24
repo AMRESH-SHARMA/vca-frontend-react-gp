@@ -3,7 +3,7 @@ import Footer from '../../components/common/footer/Footer'
 import TabOptions from '../../components/common/tabOptions/TabOptions'
 import Shop from '../shop/Shop'
 import Login from '../contact/Contact'
-import AboutUs from '../aboutUS/AboutUs'
+import ConfigCar from '../configCar/ConfigCar'
 import Navbar from '../../components/common/navbar/Navbar'
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
       case "Book":
         return <Login/>
       case "Config":
-        return <AboutUs />
+        return <ConfigCar />
       default:
         return <Shop />
     }

@@ -1,0 +1,44 @@
+/* Styling for the entire Customize component */
+.customize-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styling for the dropdowns */
+  .dropdown {
+    margin-bottom: 15px;
+  }
+  
+  /* Styling for labels */
+  .label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  /* Styling for select dropdowns */
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Styling for the Total Cart Value section */
+  .total-price {
+    font-weight: bold;
+    margin-top: 100px;
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .customize-container {
+      padding: 10px;
+    }
+    
+    /* Adjust other styles as needed */
+  }
+  

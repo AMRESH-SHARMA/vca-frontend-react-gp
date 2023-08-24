@@ -1,7 +1,8 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import axios from "axios";
- import "./Logins.css"; 
- //import VideoPlayer from "./VideoPlayer";
+import "./Logins.scss";
+import VideoPlayer from "./VideoPlayer";
 
 // interface FormData {
 //   name: string;
@@ -10,6 +11,8 @@ import axios from "axios";
 // }
 
 function Login() {
+
+  let navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,18 +31,17 @@ function Login() {
     event.preventDefault();
 
     try {
-     let res= await axios.post("http://localhost:8080/api/auth/login", formData);
-      console.log("done",res)
-  
+      let res = await axios.post("http://localhost:8080/api/auth/login", formData);
+      console.log("done", res)
+
     } catch (error) {
       console.log(event);
     }
   };
 
-  return (
+  return (<>
     <div className="login-container">
-      { /*<VideoPlayer />*/ }
-      <h1>Login</h1>
+      <VideoPlayer />
       <form onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">Email:</label>
@@ -66,8 +68,13 @@ function Login() {
         <button type="submit" className="login-button">
           Login
         </button>
+        <button className="login-button" onClick={() => navigate('/register')}>
+          Register
+        </button>
       </form>
+
     </div>
+  </>
   );
 }
 
