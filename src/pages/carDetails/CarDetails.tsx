@@ -15,23 +15,55 @@ interface ModelData {
     updatedAt: string
 }
 
+interface DataItem {
+    id: number;
+    value1: string;
+    description: string;
+}
+
+interface NestedData {
+    data: DataItem[][];
+}
+
 const CarDetails = () => {
 
     let { id } = useParams();
     const [modelData, setModelData] = useState<ModelData>()
+    const [compDataS, setCompDataS] = useState([])
+    const [compDataC, setCompDataC] = useState([])
+    const [compDataI, setCompDataE] = useState([])
+    const [compDataE, setCompDataI] = useState([])
+
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         try {
             (async () => {
-                let res = await axios.get(`/vehicles/${id}`)
-                console.log(res.data.data)
-                setModelData(res.data.data.model)
+                let ress = await axios.get(`/vehicles/S/${id}`)
+                let resc = await axios.get(`/vehicles/C/${id}`)
+                let resi = await axios.get(`/vehicles/I/${id}`)
+                let rese = await axios.get(`/vehicles/E/${id}`)
+                // console.log('c', res.data.data)
+                setCompDataS(ress.data.data)
+                setCompDataC(resc.data.data)
+                setCompDataI(resi.data.data)
+                setCompDataE(rese.data.data)
             })()
         } catch (e) {
             console.log(e)
         } finally {
             setLoading(false)
+        }
+
+        try {
+            (async () => {
+                let res = await axios.get(`/models/${id}`)
+                setModelData(res.data.data.models)
+            })()
+        } catch (e) {
+            console.log(e)
+        } finally {
+            // setLoading(false)
         }
 
     }, [])
@@ -41,26 +73,42 @@ const CarDetails = () => {
             <>
                 <div className="details-wrapper">
                     <div className="details-info">
-                        <h5>Standard Feature</h5>
-                        <ol>
-                            <li>+ Head north on N Halsted St</li>
-                            <li>Turn right on W Diversey Pkwy</li>
-                            <li>Turn left on N Orchard St</li>
-                        </ol>
+                        <div className='details-info-body'>
+                            <h5>Standard Feature</h5>
+                            <ol>
+                                {compDataS.map((item, index) => (
+                                    <li key={index}>{item[2]}</li>
+                                ))}
+                            </ol>
+                        </div>
 
-                        <h5>Standard Feature</h5>
-                        <ol>
-                            <li>Head north on N Halsted St</li>
-                            <li>Turn right on W Diversey Pkwy</li>
-                            <li>Turn left on N Orchard St</li>
-                        </ol>
+                        <div className='details-info-body'>
+                            <h5>Core Feature</h5>
+                            <ol>
+                                {compDataC.map((item, index) => (
+                                    <li key={index}>{item[2]}</li>
+                                ))}
+                            </ol>
+                        </div>
 
-                        <h5>Standard Feature</h5>
-                        <ol>
-                            <li>Head north on N Halsted St</li>
-                            <li>Turn right on W Diversey Pkwy</li>
-                            <li>Turn left on N Orchard St</li>
-                        </ol>
+                        <div className='details-info-body'>
+                            <h5>Interior Feature</h5>
+                            <ol>
+                                {compDataI.map((item, index) => (
+                                    <li key={index}>{item[2]}</li>
+                                ))}
+                            </ol>
+                        </div>
+
+                        <div className='details-info-body'>
+                            <h5>Exterior Feature</h5>
+                            <ol>
+                                {compDataE.map((item, index) => (
+                                    <li key={index}>{item[2]}</li>
+                                ))}
+                            </ol>
+                        </div>
+
                     </div>
 
                     <div className="image-wrapper">
