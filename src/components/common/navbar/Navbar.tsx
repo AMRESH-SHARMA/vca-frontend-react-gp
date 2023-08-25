@@ -1,14 +1,14 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './navbar.scss'
 
 const Navbar = () => {
 
   const navigate = useNavigate()
-  const [show, setShow] = useState<boolean>(true)
-  const handleShow = () => {
-    setShow(!show)
-  }
+  // const [show, setShow] = useState<boolean>(true)
+  // const handleShow = () => {
+  //   setShow(!show)
+  // }
 
   return (
     <nav className="navbar">
