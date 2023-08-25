@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import './carDetails.scss'
 
@@ -15,24 +15,21 @@ interface ModelData {
     updatedAt: string
 }
 
-interface DataItem {
+interface CompDataItem {
     id: number;
-    value1: string;
-    description: string;
-}
-
-interface NestedData {
-    data: DataItem[][];
+    comp_name: string;
 }
 
 const CarDetails = () => {
 
-    let { id } = useParams();
+    let navigate = useNavigate();
+
+    const { id } = useParams();
     const [modelData, setModelData] = useState<ModelData>()
-    const [compDataS, setCompDataS] = useState([])
-    const [compDataC, setCompDataC] = useState([])
-    const [compDataI, setCompDataE] = useState([])
-    const [compDataE, setCompDataI] = useState([])
+    const [compDataS, setCompDataS] = useState<CompDataItem[]>([])
+    const [compDataC, setCompDataC] = useState<CompDataItem[]>([])
+    const [compDataI, setCompDataE] = useState<CompDataItem[]>([])
+    const [compDataE, setCompDataI] = useState<CompDataItem[]>([])
 
     const [loading, setLoading] = useState(true)
 
@@ -48,6 +45,7 @@ const CarDetails = () => {
                 setCompDataC(resc.data.data)
                 setCompDataI(resi.data.data)
                 setCompDataE(rese.data.data)
+                console.log(ress.data.data)
             })()
         } catch (e) {
             console.log(e)
@@ -77,7 +75,7 @@ const CarDetails = () => {
                             <h5>Standard Feature</h5>
                             <ol>
                                 {compDataS.map((item, index) => (
-                                    <li key={index}>{item[2]}</li>
+                                    <li key={index}>{item.comp_name}</li>
                                 ))}
                             </ol>
                         </div>
@@ -86,7 +84,7 @@ const CarDetails = () => {
                             <h5>Core Feature</h5>
                             <ol>
                                 {compDataC.map((item, index) => (
-                                    <li key={index}>{item[2]}</li>
+                                    <li key={index}>{item.comp_name}</li>
                                 ))}
                             </ol>
                         </div>
@@ -95,7 +93,7 @@ const CarDetails = () => {
                             <h5>Interior Feature</h5>
                             <ol>
                                 {compDataI.map((item, index) => (
-                                    <li key={index}>{item[2]}</li>
+                                    <li key={index}>{item.comp_name}</li>
                                 ))}
                             </ol>
                         </div>
@@ -104,7 +102,7 @@ const CarDetails = () => {
                             <h5>Exterior Feature</h5>
                             <ol>
                                 {compDataE.map((item, index) => (
-                                    <li key={index}>{item[2]}</li>
+                                    <li key={index}>{item.comp_name}</li>
                                 ))}
                             </ol>
                         </div>
@@ -128,9 +126,8 @@ const CarDetails = () => {
                     </div>
 
                     <div className="btn-panel">
-                        <button>confirm</button>
-                        <button>confirm</button>
-                        <button>confirm</button>
+                        <button className='button' >Add to Cart</button>
+                        <button className='button' onClick={() => navigate(`/car-configure/${id}`)}>Modify</button>
                     </div>
                 </div>
             </>

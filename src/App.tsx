@@ -4,6 +4,7 @@ import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import CompanyForm from './pages/register/CompanyForm'
 import CarDetails from './pages/carDetails/CarDetails'
+import CarConfigure from './pages/carConfigure/CarConfigure'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/register" element={<Register/>} />
             <Route path="/furtherregister" element= { <CompanyForm/>} />
             <Route path="/car-details/:id" element= { <CarDetails/>} />
+            <Route path="/car-configure/:id" element= { <CarConfigure />} />
           </Route>
         </Routes>
       </BrowserRouter>
