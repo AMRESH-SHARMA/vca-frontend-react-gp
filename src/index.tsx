@@ -8,6 +8,12 @@ import swDev from './serviceWorkerRegistration';
 import axios from 'axios'
 
 const setupAxios = () => {
+  localStorage.setItem('authToken', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbXJlc2giLCJpYXQiOjE2OTMxMzY0MzUsImV4cCI6MTY5MzIyMjgzNX0.Q2bHxBy_GF1AbQL7FoS0iD7MxXy_qdFIBmhUmvyte3U')
+
+  const authToken = localStorage.getItem("authToken");
+  if (authToken) {
+    axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
+  }
   axios.defaults.baseURL = BASE_URL;
 };
 setupAxios();

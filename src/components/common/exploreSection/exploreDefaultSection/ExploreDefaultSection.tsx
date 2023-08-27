@@ -25,20 +25,56 @@ const ExploreDefaultSection = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
 
+  // useEffect(() => {
+
+  //   try {
+  //     setTimeout(async () => {
+  //       let res: { data: { data: { models: CarApi[] } } };
+
+  //       res = await axios.get(`/models?page=${page}`)
+  //       console.log('d', res)
+  //       setCarsData((prev) => {
+  //         return [...prev, ...res.data.data.models];
+  //       });
+
+  //       setLoading(false);
+  //     }, 500);
+  //   } catch (e) {
+  //     console.warn(e);     
+  //   }
+
+  // }, [page]);
+
   useEffect(() => {
-    setTimeout(async () => {
-      // const res = await axios.get(`https://api.slingacademy.com/v1/sample-data/users?offset=${page}&limit=6`);
-      let res: { data: { data: { models: CarApi[] } } };
+    // Wrap the asynchronous code inside a function to handle errors
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/models?page=${page}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          }
+        })
+        console.log('Data:', res.data);
 
-      res = await axios.get(`/models?page=${page}`)
-      console.log('d', res)
-      setCarsData((prev) => {
-        return [...prev, ...res.data.data.models];
-      });
+        setCarsData((prev) => {
+          return [...prev, ...res.data.data.models];
+        });
 
-      setLoading(false);
-    }, 500);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error:', error);
+        // You might want to set an error state or display an error message here
+      }
+    };
+
+    // Call the fetchData function after a 500ms delay
+    const timerId = setTimeout(fetchData, 500);
+
+    // Clean up the timer to avoid memory leaks
+    return () => clearTimeout(timerId);
+
   }, [page]);
+
 
 
 

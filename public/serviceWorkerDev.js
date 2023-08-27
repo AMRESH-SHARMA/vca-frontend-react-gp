@@ -10,12 +10,17 @@ this.addEventListener('install', (event) => {
                 "logo192.png",
                 "logo512.png",
                 "/manifest.json",
-                "static/js/bundle.js",
-                "static/js/main.chunk.js",
-                "static/js/0.chunk.js",
+                // "static/js/bundle.js",
+                // "static/js/main.chunk.js",
+                // "static/js/0.chunk.js",
+                // "/static/media/carsearch.3bf4a2dd37d3d488a73e.webp",
                 "/index.html",
                 "/",
-                "/contact"])
+                "/login",
+                "/register",
+                "/car-details",
+                "/car-configure"
+                ])
         })
     );
 });
