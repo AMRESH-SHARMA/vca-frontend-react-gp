@@ -18,26 +18,41 @@
         // "@typescript-eslint/triple-slash-reference": "off"
     },
     "overrides": [
-        {//**->recursive in subdir, ts?(x)->ts or tsx
+        { //**->recursive in subdir, ts?(x)->ts or tsx
             "files": [
-                "src/**/*.ts?(x)" ,
+                "src/**/*.ts?(x)",
                 "**/*.js",
-                "**/*.json"  
+                "**/*.json"
             ],
             "rules": {
-                "indent": ["warn", 2],
+                "indent": [
+                    "warn",
+                    2
+                ],
                 // "linebreak-style": ["warn", "unix"],
-                "quotes": ["warn", "single"],
-                "semi": ["warn", "never"],
+                "quotes": [
+                    "warn",
+                    "single"
+                ],
+                "semi": [
+                    "warn",
+                    "never"
+                ],
                 "no-empty": "warn",
-                "comma-dangle": ["warn", "never"],
-                "spaced-comment": ["warn", "always"],
+                "comma-dangle": [
+                    "warn",
+                    "never"
+                ],
+                "spaced-comment": [
+                    "warn",
+                    "always"
+                ],
                 "no-unused-vars": "warn",
                 "no-var": "error",
-
                 "react/react-in-jsx-scope": "off",
                 "react/jsx-uses-react": "off",
-                "react/prop-types": "warn"
+                "react/prop-types": "off",
+                "react/no-unescaped-entities": "off"
             }
         }
     ]

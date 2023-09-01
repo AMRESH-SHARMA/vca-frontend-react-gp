@@ -5,8 +5,11 @@ import Register from './pages/register/Register'
 import CompanyForm from './pages/register/CompanyForm'
 import CarDetails from './pages/carDetails/CarDetails'
 import CarConfigure from './pages/carConfigure/CarConfigure'
+import Invoice from './pages/invoice/Invoice'
+import Protected from './utility/Protected'
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
@@ -18,6 +21,14 @@ function App() {
             <Route path="/furtherregister" element= { <CompanyForm/>} />
             <Route path="/car-details/:id" element= { <CarDetails/>} />
             <Route path="/car-configure/:id" element= { <CarConfigure />} />
+            <Route
+            path="/invoice/:modelId"
+            element={
+              <Protected>
+                <Invoice />
+              </Protected>
+            }
+          />
           </Route>
         </Routes>
       </BrowserRouter>

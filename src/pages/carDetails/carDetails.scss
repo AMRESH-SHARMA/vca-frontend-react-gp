@@ -23,15 +23,18 @@
 }
 
 .image-wrapper-child{
-  height: 20rem;
+  // height: 20rem;
 }
 
 .details-car-img {
   padding-top: 50px;
+  max-height: 400px;
+  max-width: 400px;
+  margin-bottom: 50px;
 }
 
 .details-info {
-  max-width: 25rem;
+  max-width: 600px;
   padding: 0px;
 }
 

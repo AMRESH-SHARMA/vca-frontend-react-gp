@@ -10,6 +10,10 @@
   width: 40px;
 }
 
+.tab-label{
+  font-size: $font-mid;
+}
+
 .active-tab{
   border-bottom: 3px solid $tab-bottom-color;
 }

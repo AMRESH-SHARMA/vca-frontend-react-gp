@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import './carDetails.scss'
+import { CURRENT_BASE_URL } from '../../utility/apiConfig';
+import Navbar from '../../components/common/navbar/Navbar';
 
 interface ModelData {
     id: number,
@@ -25,6 +27,7 @@ const CarDetails = () => {
     let navigate = useNavigate();
 
     const { id } = useParams();
+
     const [modelData, setModelData] = useState<ModelData>()
     const [compDataS, setCompDataS] = useState<CompDataItem[]>([])
     const [compDataC, setCompDataC] = useState<CompDataItem[]>([])
@@ -57,11 +60,10 @@ const CarDetails = () => {
             (async () => {
                 let res = await axios.get(`/models/${id}`)
                 setModelData(res.data.data.models)
+                // console.log(res.data.data.models)
             })()
         } catch (e) {
             console.log(e)
-        } finally {
-            // setLoading(false)
         }
 
     }, [])
@@ -69,6 +71,7 @@ const CarDetails = () => {
     return (<>
         {!loading ?
             <>
+            <Navbar/>
                 <div className="details-wrapper">
                     <div className="details-info">
                         <div className='details-info-body'>
@@ -114,10 +117,8 @@ const CarDetails = () => {
                             <h1>{modelData?.modName}</h1>
                             <img
                                 className="details-car-img"
-                                src={modelData?.image_path}
+                                src={`${CURRENT_BASE_URL}/${modelData?.image_path}`}
                                 alt="image"
-                                height={300}
-                                width={500}
                             />
                         </div>
                         <p>Price: {modelData?.price}</p>
@@ -126,7 +127,7 @@ const CarDetails = () => {
                     </div>
 
                     <div className="btn-panel">
-                        <button className='button' >Add to Cart</button>
+                        <button className='button' onClick={() => navigate(`/invoice/${id}`)}>Order Now</button>
                         <button className='button' onClick={() => navigate(`/car-configure/${id}`)}>Modify</button>
                     </div>
                 </div>
@@ -134,8 +135,6 @@ const CarDetails = () => {
             : <>
 
             </>}
-
-
 
     </>
     )

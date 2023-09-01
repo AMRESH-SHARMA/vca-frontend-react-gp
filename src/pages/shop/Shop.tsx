@@ -3,6 +3,7 @@ import ExploreDefaultSection from '../../components/common/exploreSection/explor
 import Filter from '../../components/common/filter/Filter'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import ErrorPage from '../errPage/ErrorPage'
 
 
 interface Segment {
@@ -17,7 +18,7 @@ interface Manufacturer {
 
 
 const Shop = () => {
-  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [segments, setSegments] = useState<Segment[]>([]);
   const [manufacturers, setManufacturers] = useState<Manufacturer[]>([]);
 
@@ -29,11 +30,16 @@ const Shop = () => {
     setClickedSegId(id);
     (async () => {
       try {
-        const res = await axios.get(`/manufacturers/${id}`)
+        const res = await axios.get(`/manufacturers/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          }
+        })
         // console.log(res.data)
-        setManufacturers(res.data.data);
+        setManufacturers(res?.data.data);
       } catch (e) {
         console.warn(e)
+        setError(true)
       }
     })()
   };
@@ -41,50 +47,39 @@ const Shop = () => {
   const handleManufacturerClicked = (id: number) => {
     // console.log("clicked manu with ID:", id);
     setClickedManuId(id);
-    (async () => {
-      try {
-        const res = await axios.get(`/models/${clickedSegId}/${id}`)
-        // setModels(res.data.data);
-      } catch (e) {
-        console.warn(e)
-      }
-    })()
   };
 
   useEffect(() => {
     (async () => {
       try {
-        const res = await axios.get(`/segments`)
-        setSegments([{ id: 0, name: 'all' }, ...res.data.data])
-        setLoading(false)
+        const res = await axios.get('/segments')
+        const freshSegments = [{ id: 0, name: 'all' }, ...res.data.data]
+        setSegments(freshSegments)
       } catch (e) {
-        setLoading(false)
         console.warn(e)
+        setError(true)
       }
     })()
   }, [])
 
-
   return (<>
-    <div className='max-width'>
-      <div className='filters'>
+    {error ? <ErrorPage /> : <>
+      <div className='max-width'>
+        <div className='filters'>
 
-        <Filter data={segments} title={'Segment'} onItemClick={handleSegmentClicked} />
+          <Filter data={segments} title={'Segment'} onItemClick={handleSegmentClicked} />
 
-        <Filter data={manufacturers} title={'Manufacturer'} onItemClick={handleManufacturerClicked} />
+          <Filter data={manufacturers} title={'Manufacturer'} onItemClick={handleManufacturerClicked} />
 
+        </div>
       </div>
-    </div>
-    {!clickedManuId || clickedSegId===0?
-      <>
+      {!clickedManuId || clickedSegId === 0 ?
         <ExploreDefaultSection />
-      </>
-      : <>
+        :
         <ExploreSection segId={clickedSegId} manuId={clickedManuId} />
-      </>}
-
-  </>
-  )
+      }
+    </>}
+  </>)
 }
 
 export default Shop
