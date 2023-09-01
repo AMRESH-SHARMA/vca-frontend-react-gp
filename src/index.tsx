@@ -8,7 +8,7 @@ import swDev from './serviceWorkerRegistration';
 import axios from 'axios'
 
 const setupAxios = () => {
-  localStorage.setItem('authToken', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbXJlc2giLCJpYXQiOjE2OTMxMzY0MzUsImV4cCI6MTY5MzIyMjgzNX0.Q2bHxBy_GF1AbQL7FoS0iD7MxXy_qdFIBmhUmvyte3U')
+  // localStorage.setItem('authToken', 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbXJlc2giLCJpYXQiOjE2OTM0NzMyNzEsImV4cCI6MTY5MzU1OTY3MX0.HX_8tc-UIuGGvewc6JriBOH544wd1_rj97Gm5qhkpwg')
 
   const authToken = localStorage.getItem("authToken");
   if (authToken) {
@@ -23,9 +23,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <App />
-  </React.StrictMode>
+  // </React.StrictMode> 
 );
 
 // If you want to start measuring performance in your app, pass a function

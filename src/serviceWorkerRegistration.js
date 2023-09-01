@@ -21,6 +21,6 @@ export default function swRegister() {
   } else swUrl = `${process.env.PUBLIC_URL}/serviceWorkerProd.js`
 
   navigator.serviceWorker.register(swUrl).then((response) => {
-    console.warn('response', response)
+    // console.warn('response', response)
   })
 }

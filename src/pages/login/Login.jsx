@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 import "./Logins.scss";
 import VideoPlayer from "./VideoPlayer";
-
-// interface FormData {
-//   name: string;
-//   email: string;
-//   password: string;
-// }
+import { authExist } from "../../utility/util";
 
 function Login() {
 
   let navigate = useNavigate();
+
+  useEffect(() => {
+    if (authExist()) { navigate('/') }
+  }, [])
+
   const [formData, setFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
+    role: ["ROLE_USER"]
   });
 
   const handleInputChange = (event) => {
@@ -27,15 +28,20 @@ function Login() {
     }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     try {
-      let res = await axios.post("http://localhost:8080/api/auth/login", formData);
-      console.log("done", res)
-
-    } catch (error) {
-      console.log(event);
+      let res = await axios.post("/auth/signin", formData);
+      if (res.data.status == 200) {
+        localStorage.setItem('authToken', res.data.data.jwt)
+        localStorage.setItem('userId', res.data.data.id)
+        localStorage.setItem('userName', res.data.data.username)
+        navigate('/')
+      } else { alert("login failed!") }
+    } catch (e) {
+      console.log(e);
+      alert("login failed!")
     }
   };
 
@@ -43,6 +49,17 @@ function Login() {
     <div className="login-container">
       <VideoPlayer />
       <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="username">UserName:</label>
+          <input
+            type="username"
+            id="username"
+            name="username"
+            value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
         <div className="input-group">
           <label htmlFor="email">Email:</label>
           <input

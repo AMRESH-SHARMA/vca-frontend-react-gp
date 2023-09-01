@@ -1,37 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './carConfigure.scss'
 import ConfigTabOptions from '../../components/common/configTabOptions/ConfigTabOptions';
-import StandardFeature from '../carConfigTabPages/StandardFeature';
-import CoreFeature from '../carConfigTabPages/CoreFeature';
-import InteriorFeature from '../carConfigTabPages/InteriorFeature';
-import ExteriorFeature from '../carConfigTabPages/ExteriorFeature';
 import Navbar from '../../components/common/navbar/Navbar';
+import FeatureConfig from '../carConfigTabPages/FeatureConfig';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CarConfigure = () => {
 
-    const [activeTab, setActiveTab] = useState<string>('S');
-
-    const getCorrectScreen = (tab: string) => {
-      switch (tab) {
-        case "S":
-          return <StandardFeature />
-        case "C":
-          return <CoreFeature />
-        case "I":
-          return <InteriorFeature />
-          case "E":
-            return <ExteriorFeature />
-        default:
-          return <></>
-      }
+  const { id } = useParams()
+  const [activeTab, setActiveTab] = useState<string>('S');
+  let navigate = useNavigate()
+  const getCorrectScreen = (tab: string) => {
+    switch (tab) {
+      case "S":
+        return <FeatureConfig comp_type={"S"} />
+      case "C":
+        return <FeatureConfig comp_type={"C"} />
+      case "I":
+        return <FeatureConfig comp_type={"I"} />
+      case "E":
+        return <FeatureConfig comp_type={"E"} />
+      default:
+        return <></>
     }
-  
-    return (<>
-    <Navbar/>
+  }
+
+  return (<>
+    <Navbar />
     <ConfigTabOptions activeTab={activeTab} setActiveTab={setActiveTab} />
     {getCorrectScreen(activeTab)}
-    </>
-    )
+    <div className="btn-panel">
+      <button className='button' onClick={() => navigate(`/invoice/${id}`)}>Order Now</button>
+    </div>
+  </>
+  )
 }
 
 export default CarConfigure

@@ -1,5 +1,4 @@
 import './configTabOptions.scss'
-import { carSearch, carPlus } from '../../../assets/icons';
 
 interface TabOptionsProps {
   activeTab: string;
@@ -36,7 +35,7 @@ const ConfigTabOptions: React.FC<TabOptionsProps> = ({ activeTab, setActiveTab }
 
         {tabs.map((tab) => {
           return <div key={tab.id} onClick={() => setActiveTab(tab.name)} className={`tab-item absolute-center cur-po ${activeTab === tab.name && 'active-tab'}`}>
-            <p>{tab.head1}</p>
+            <p className='tab-label'>{tab.head1}</p>
           </div>
         })}
 
