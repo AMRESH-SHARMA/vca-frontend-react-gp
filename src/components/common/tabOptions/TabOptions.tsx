@@ -34,19 +34,13 @@ const TabOptions: React.FC<TabOptionsProps> = ({ activeTab, setActiveTab }) => {
     <p className="overlay-p">Product for leasing company</p>
     </div>
     <div className='max-width'>
-      {/* <div id="tab-option-banner-top">
-          <h6>SHOPPING TOOLS</h6>
-          <br />
-          <h2>FIND YOUR FLEET.</h2>
-        </div> */}
-
 
       <div id="tab-option-banner">
 
         {tabs.map((tab) => {
           return <div key={tab.id} onClick={() => setActiveTab(tab.name)} className={`tab-item absolute-center cur-po ${activeTab === tab.name && 'active-tab'}`}>
-            <img src={tab.img} alt={tab.name} className='tab-image ' />
-            <p>{tab.head1}</p>
+            <img src={tab.img} alt={tab.name} className='tab-image' />
+            <p className='tab-label'>{tab.head1}</p>
           </div>
         })}
 

@@ -1,31 +1,44 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Footer from '../../components/common/footer/Footer'
-import Header from '../../components/common/header/Header'
 import TabOptions from '../../components/common/tabOptions/TabOptions'
 import Shop from '../shop/Shop'
-import Login from '../contact/Contact'
-import AboutUs from '../../components/aboutUS/AboutUs'
-import ExploreSection from '../../components/common/exploreSection/ExploreSection'
+import Contact from '../contact/Contact'
+import Navbar from '../../components/common/navbar/Navbar'
 
 const Home = () => {
 
   const [activeTab, setActiveTab] = useState<string>('Shop');
+  const [mode, setMode] = useState<string>('online')
+
+  useEffect(() => {
+    sessionStorage.clear()
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    fetch(url).then(r => {
+      if (!r.ok) {
+        setMode('offline')
+      }
+    }).catch(e=>setMode('offline'))
+  }, [])
 
   const getCorrectScreen = (tab: string) => {
     switch (tab) {
       case "Shop":
         return <Shop />
       case "Book":
-        return <Login/>
-      case "Config":
-        return <AboutUs />
+        return <Contact />
       default:
         return <Shop />
     }
   }
 
   return (<>
-    <Header />
+    {
+      mode === 'offline' &&
+      <div>
+        you are in offline mode or some issue with connection
+      </div>
+    }
+    <Navbar />
     <TabOptions activeTab={activeTab} setActiveTab={setActiveTab} />
     {getCorrectScreen(activeTab)}
     <Footer />

@@ -32,7 +32,7 @@ const filterItem: React.FC<FilterItemProps> = ({ data, title, onItemClick }) => 
         <i className={`fa fa-chevron-right icon ${isOpen && "open"}`}></i>
       </div>
       <div className={`dropdown-body ${isOpen && 'open'}`}>
-        {data && data.map(item => (
+        {data.length && data.map(item => (
           <div className="dropdown-item" onClick={() => handleItemClick(item.id)} key={item.id}>
             <span className={`dropdown-item-dot ${item.id === selectedItem && 'selected'}`}>• </span>
             {item.name}

@@ -11,11 +11,19 @@ this.addEventListener('install', (event) => {
                 "logo512.png",
                 "/manifest.json",
                 "static/js/bundle.js",
-                "static/js/main.chunk.js",
-                "static/js/0.chunk.js",
+                "http://localhost:3000/static/media/carsearch.3bf4a2dd37d3d488a73e.webp",
+                "http://localhost:3000/static/media/carplus.42195b808d36491b9bd5.webp",
+                "https://fonts.googleapis.com/css2?family=Nunito&display=swap",
+                "http://localhost:3000/static/media/gstore.50cb38176a0bde6e48ac.webp",
+                "http://localhost:3000/static/media/appstore.41445d9bd413fd71be57.webp",
+                "http://localhost:3000/static/media/fleet-banner.c5d4f898f4cb8c8b1dc5.jpg",
                 "/index.html",
                 "/",
-                "/contact"])
+                "/login",
+                "/register",
+                "/car-details",
+                "/car-configure"
+                ])
         })
     );
 });

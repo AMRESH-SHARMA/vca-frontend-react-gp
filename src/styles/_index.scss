@@ -35,3 +35,23 @@ body {
   margin-bottom: 32px;
   font-weight: 600;
 }
+
+.button{
+  min-width: max-content;
+  padding: 10px;
+  color: $white;
+  border: none;
+  font-size: 18px;
+  background-color: $card-button;
+  cursor: pointer;
+}
+
+.g-input{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+p{
+  font-size: 18px;
+}

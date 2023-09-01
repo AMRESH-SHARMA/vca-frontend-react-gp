@@ -1,18 +1,32 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import About from './pages/About'
-
-import Contact from './pages/Contact'
 import Home from './pages/home/Home'
+import Login from './pages/login/Login'
+import Register from './pages/register/Register'
+import CarDetails from './pages/carDetails/CarDetails'
+import CarConfigure from './pages/carConfigure/CarConfigure'
+import Invoice from './pages/invoice/Invoice'
+import Protected from './utility/Protected'
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route>
             <Route path="/" element={<Home/>} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/register" element={<Register/>} />
+            <Route path="/car-details/:id" element= { <CarDetails/>} />
+            <Route path="/car-configure/:id" element= { <CarConfigure />} />
+            <Route
+            path="/invoice/:modelId"
+            element={
+              <Protected>
+                <Invoice />
+              </Protected>
+            }
+          />
           </Route>
         </Routes>
       </BrowserRouter>
