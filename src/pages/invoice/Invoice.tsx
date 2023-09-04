@@ -155,8 +155,9 @@ const Invoice = () => {
                 {console.log(item)}
                 {item.selectedValue.split("@")[2]}
                 <br />
-                {item.selectedValue ? "₹" : null}
-                {item.selectedValue.split("@")[3]}
+                {item.selectedValue.split("@")[3] != 0 ? (
+                  <>₹ {item.selectedValue.split("@")[3]}</>
+                ) : null}
               </p>
             ))}
           </div>
