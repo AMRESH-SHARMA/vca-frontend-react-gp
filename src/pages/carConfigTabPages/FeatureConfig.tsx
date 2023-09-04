@@ -44,15 +44,6 @@ const FeatureConfig: React.FC<Props> = ({ comp_type }) => {
             console.log(e)
         }
 
-        // try {
-        //     (async () => {
-        //         let res = await axios.get(`/models/${id}`)
-        //         setModelData(res.data.data.models)
-        //     })()
-        // } catch (e) {
-        //     console.log(e)
-        // }
-
     }, [comp_type])
 
     return (<>
