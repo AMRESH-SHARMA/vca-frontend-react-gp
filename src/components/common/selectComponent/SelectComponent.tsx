@@ -70,7 +70,7 @@ const SelectComponent: React.FC<SelectComponentProps> = ({
           <option>Loading...</option>
         ) : (
           <>
-            <option value={""}>Default</option>
+            <option value={`@@@0`}>Default</option>
             {options.map((option, index) => (
               <option
                 key={index}
